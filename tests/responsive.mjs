@@ -14,4 +14,4 @@ assert.equal(await page.getByRole('button',{name:'Manage users',exact:true}).isV
 for(const section of ['transactions','funds','people']){await page.locator(`[data-page="${section}"]`).click();await fits(section);}
 await page.locator('#add-entry').click();assert(await page.locator('#modal').isVisible());await fits('transaction form');await page.locator('#cancel').click();
 }
-assert.deepEqual(errors,[]);console.log(`${role} ${width}px: role controls and layout passed`);await page.close();}}finally{await browser.close();}
+await page.locator('#profile-button').click();await page.getByRole('heading',{name:'My profile'}).waitFor();await fits('profile');await page.locator('#cancel').click();await page.locator('#logout-button').click();await page.locator('#login-form').waitFor();assert.equal(await page.evaluate(()=>localStorage.getItem('mywallet-auth')||sessionStorage.getItem('mywallet-auth')),null);assert.deepEqual(errors,[]);console.log(`${role} ${width}px: role controls and layout passed`);await page.close();}}finally{await browser.close();}
