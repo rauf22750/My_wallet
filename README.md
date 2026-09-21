@@ -45,3 +45,16 @@ Apply the schema directly with `node scripts/setup-database.mjs` after setting D
 ## Separate administrator workspace
 
 Administrators land on a user-management dashboard, create/delete member accounts, and view member wallets read-only. They do not have a personal finance dashboard or wallet write controls. Migration `002_admin_read_only.sql` also denies administrator wallet inserts, updates and deletes at the database layer. Members retain all personal finance tools and cannot manage logins. Existing records are preserved.
+
+## Installable mobile app and browser routes
+
+- `/` shows the install page, with a visible Continue in browser link. Nothing downloads automatically.
+- `/web` opens the wallet login/dashboard. The installed PWA starts here too.
+- Android/compatible desktop browsers can show a native install prompt when the browser makes one available. iPhone/iPad instructions explain Safari → Share → Add to Home Screen. Actual installation depends on the browser and OS.
+- `manifest.webmanifest` includes standalone display and PNG icons; `sw.js` caches only the generic offline page. Authentication, API responses, wallet data and app scripts are never cached by the service worker. Internet is required for transactions.
+- Deploy the updated project to Vercel to enable this on your real HTTPS domain. No fixed BASE_URL is required: paths automatically use the current origin. Environment variables remain the same.
+- Browser checks: `node tests/pwa.mjs` and `node tests/responsive.mjs` use local Chrome and a running development server on port 3001. Native installation on a physical iPhone/Android device must be checked on the deployed HTTPS site.
+
+## Monthly PDF reports
+
+Use Reports, choose From month and To month (both inclusive), and click View report. Download PDF saves the previewed range directly. Opening/closing cash and outstanding loans use history up to the selected boundaries; only transactions within the range are listed. Cash received/paid includes loan cash movements, while Expenses excludes loan principal. Admins can report on the member wallet they are viewing. PDFs are generated locally with browser-rendered fonts to preserve Unicode names; pages are rasterized, so text is not selectable. Reports do not modify wallet records.

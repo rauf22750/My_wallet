@@ -1,0 +1,4 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {makeReport} from './reports.js';
+const state={categories:[{id:'c'}],transactions:[{date:'2025-12-31',type:'income',amount:100},{date:'2026-01-01',type:'income',amount:200},{date:'2026-02-28',type:'expense',amount:50},{date:'2026-03-01',type:'expense',amount:75}]};
+test('report includes complete boundary months and opening balance',()=>{const r=makeReport(state,'2026-01','2026-02');assert.equal(r.rows.length,2);assert.equal(r.opening,100);assert.equal(r.closing,250);assert.equal(r.inflow,200);assert.equal(r.outflow,50);});
+test('reject invalid/reversed months; empty period retains prior cash',()=>{assert.throws(()=>makeReport(state,'2026-13','2027-01'));assert.throws(()=>makeReport(state,'2026-03','2026-01'));assert.equal(makeReport(state,'2026-04','2026-04').closing,175);});
