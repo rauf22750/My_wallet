@@ -1,0 +1,2 @@
+const key='mywallet-auth';
+export function sessionStore(persistentStorage,temporaryStorage){let persistent=true;return {setPersistent(value){persistent=value;},save(session){persistentStorage.removeItem(key);temporaryStorage.removeItem(key);(persistent?persistentStorage:temporaryStorage).setItem(key,JSON.stringify(session));},load(){const saved=persistentStorage.getItem(key);persistent=!!saved;const raw=saved||temporaryStorage.getItem(key);return raw?JSON.parse(raw):null;},clear(){persistentStorage.removeItem(key);temporaryStorage.removeItem(key);}};}

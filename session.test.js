@@ -1,0 +1,6 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {sessionStore} from './session.js';
+const storage=()=>{const m=new Map();return{getItem:k=>m.get(k)||null,setItem:(k,v)=>m.set(k,v),removeItem:k=>m.delete(k)}};
+test('remembered login survives reload and refresh; sign out clears both stores',()=>{const local=storage(),tab=storage(),s=sessionStore(local,tab);s.setPersistent(true);s.save({access_token:'one'});const restored=sessionStore(local,tab);assert.equal(restored.load().access_token,'one');restored.save({access_token:'two'});assert.match(local.getItem('mywallet-auth'),/two/);restored.clear();assert.equal(local.getItem('mywallet-auth'),null);assert.equal(tab.getItem('mywallet-auth'),null);});
+test('unchecked remember me uses only tab session, including token refresh',()=>{const local=storage(),tab=storage(),s=sessionStore(local,tab);s.save({access_token:'old'});s.setPersistent(false);s.save({access_token:'one'});assert.equal(local.getItem('mywallet-auth'),null);const restored=sessionStore(local,tab);assert.equal(restored.load().access_token,'one');restored.save({access_token:'two'});assert.equal(local.getItem('mywallet-auth'),null);assert.match(tab.getItem('mywallet-auth'),/two/);});
