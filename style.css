@@ -141,3 +141,11 @@ dialog{max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contai
   .summary>.stat>.stat-bottom{display:block!important;width:100%!important;max-width:none!important;text-align:center!important;white-space:nowrap!important;font-size:9px!important;letter-spacing:-.25px!important}
 }
 @media(max-width:380px){.summary>.stat>.stat-top{font-size:10px!important}.summary>.stat>.stat-bottom{font-size:8px!important;letter-spacing:-.45px!important}}
+
+/* Category cards use the same balanced circle treatment as the overview. */
+.fund{padding:24px;border-radius:14px;background:#fff;border:1px solid #e4ebe5;box-shadow:0 4px 18px #1d49300b}
+.fund-header{align-items:center;margin-bottom:18px}.fund-header h3{font-size:18px;color:#294536}.fund-header small{font-size:11px;color:#98a69d}
+.balance-circles{justify-content:flex-start;gap:18px;margin:8px 0 24px}.balance-circle{width:122px;height:122px;border-width:7px}.balance-circle b{font-size:16px;color:#294536}.balance-circle span{font-size:11px}
+.fund-bottom{font-size:12px;color:#829089;justify-content:space-between}.fund-bottom b{color:#52675b}.category-actions{margin-top:22px}
+@media(max-width:750px){.fund{padding:22px}.balance-circles{gap:18px}.balance-circle{width:116px;height:116px}}
+@media(max-width:420px){.fund{padding:18px}.balance-circles{gap:12px}.balance-circle{width:104px;height:104px}.fund-bottom{font-size:11px}}
