@@ -71,3 +71,73 @@ dialog{max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contai
 #quick-install{padding-right:92px!important;min-height:76px;z-index:1000}#quick-install-button{right:20px!important;top:50%!important;transform:translateY(-50%)!important;z-index:2!important;white-space:nowrap}#quick-install-close{right:7px!important;top:7px!important;z-index:3!important;display:grid!important;place-items:center!important}
 #boot-loader{position:fixed;inset:0;z-index:100;background:#f7f8fa;display:grid;place-content:center;justify-items:center;gap:8px;color:#194d3b}.boot-mark{width:52px;height:52px;display:grid;place-items:center;border-radius:14px;background:#194d3b;color:#fff;font-size:29px;animation:loader-pulse 1s ease-in-out infinite}.boot-loader span{font-size:11px;color:#829089}@keyframes loader-pulse{50%{transform:scale(.92);opacity:.75}}
 #quick-install{position:fixed;z-index:20;left:50%;bottom:22px;transform:translateX(-50%);width:min(430px,calc(100% - 28px));background:#194d3b;color:white;border-radius:14px;padding:16px 48px 16px 18px;box-shadow:0 15px 45px #102d2060;display:grid;gap:4px;font-size:12px}#quick-install strong{font-size:14px}#quick-install span{color:#c8ded1}#quick-install button{position:absolute;right:14px;top:13px;border:0;border-radius:6px;padding:7px 10px;background:white;color:#194d3b;font-weight:600}#quick-install #quick-install-close{right:6px;top:4px;background:transparent;color:white;font-size:17px;padding:2px 6px}
+.balance-circles{display:flex;gap:12px;margin:12px 0 20px}.balance-circle{width:92px;height:92px;border-radius:50%;display:grid;place-content:center;text-align:center;border:7px solid #dfe9e2}.balance-circle b{font-size:12px;overflow-wrap:anywhere}.balance-circle span{font-size:9px;color:#829089;margin-top:3px}.balance-circle.available{border-color:#74aa87}.balance-circle.pending{border-color:#d5b778}.balance-circle.pending b{color:#9a7737}
+.balance-circles{display:flex;gap:12px;margin:12px 0 20px}.balance-circle{width:92px;height:92px;border-radius:50%;display:grid;place-content:center;text-align:center;border:7px solid #dfe9e2}.balance-circle b{font-size:12px;overflow-wrap:anywhere}.balance-circle span{font-size:9px;color:#829089;margin-top:3px}.balance-circle.available{border-color:#74aa87}.balance-circle.pending{border-color:#d5b778}.balance-circle.pending b{color:#9a7737}
+.circle-stat .amount{width:116px;height:116px;border:7px solid #74aa87;border-radius:50%;display:grid;place-content:center;text-align:center;margin:14px 0 12px}.circle-stat .amount small{display:block;font-size:11px;margin:0}.circle-stat:not(.main-stat) .amount{border-color:#d5b778}.circle-stat .stat-bottom{text-align:left}
+.summary{grid-template-columns:repeat(2,minmax(240px,360px));justify-content:start;max-width:760px}.summary .stat{min-height:208px}.summary .circle-stat{min-height:208px}.fund-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start}.lower-grid{margin-top:10px}.page-heading{margin-bottom:24px}
+@media(max-width:750px){.summary{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none}.summary .stat,.summary .circle-stat{min-height:180px}.circle-stat .amount{width:96px;height:96px;font-size:22px}.fund-grid{gap:12px}}
+@media(max-width:420px){.summary{grid-template-columns:1fr}.summary .stat,.summary .circle-stat{min-height:0}}
+.empty-category{padding:42px 24px;text-align:center;margin:8px 0 28px;background:linear-gradient(135deg,#fff,#f4f8f3);border-style:dashed}.empty-category .empty-symbol{width:58px;height:58px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;background:#eaf2ed;color:#194d3b;font-size:30px}.empty-category strong{font-size:18px}.empty-category p{color:#829089;font-size:12px;margin:8px auto 18px}.empty-category .primary{min-height:44px}.summary{gap:14px;margin-bottom:24px}.summary .stat{padding:20px}.circle-stat .amount{margin-top:10px}.section-heading{margin-top:8px}.fund-grid{margin-top:4px;margin-bottom:26px}.panel{box-shadow:0 3px 14px #1d49300a}.page-heading h1{max-width:680px}
+
+/* Lightweight overview summary: circles carry the visual weight instead of large cards. */
+.summary{display:flex;align-items:center;justify-content:flex-start;gap:clamp(48px,10vw,150px);max-width:none;width:100%;padding:8px 0 22px;margin-bottom:16px}
+.summary .stat,.summary .stat.main-stat{background:transparent;border:0;box-shadow:none;border-radius:0;min-height:0;padding:0;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:22px;align-items:center}
+.summary .stat-top{grid-column:2;grid-row:1;align-self:end;font-size:12px;color:#718177;white-space:nowrap}
+.summary .stat-icon{display:none}
+.summary .circle-stat .amount{grid-column:1;grid-row:1 / span 2;margin:0;width:108px;height:108px;border-width:6px}
+.summary .stat-bottom{grid-column:2;grid-row:2;font-size:10px;color:#9aa69d;white-space:nowrap}
+@media(max-width:750px){.summary{gap:24px;overflow-x:auto;padding-bottom:16px}.summary .stat,.summary .stat.main-stat{min-width:220px}.summary .circle-stat .amount{width:92px;height:92px}.summary .stat-top{font-size:11px}.summary .stat-bottom{white-space:normal;max-width:120px}}
+@media(max-width:420px){.summary{display:grid;grid-template-columns:1fr 1fr;gap:16px}.summary .stat,.summary .stat.main-stat{min-width:0;grid-template-columns:76px 1fr;column-gap:10px}.summary .circle-stat .amount{width:76px;height:76px}.summary .stat-top{font-size:10px;white-space:normal}.summary .stat-bottom{font-size:9px}}
+
+@media(max-width:750px){
+  .summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:18px;overflow:visible}
+  .summary .stat,.summary .stat.main-stat{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-width:0;gap:7px;text-align:center}
+  .summary .circle-stat .amount{order:1;margin:0;width:92px;height:92px}
+  .summary .stat-top{order:2;font-size:11px;white-space:normal;line-height:1.25}
+  .summary .stat-bottom{order:3;white-space:normal;line-height:1.45;max-width:130px}
+}
+@media(max-width:420px){.summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.summary .circle-stat .amount{width:78px;height:78px}.summary .stat-top{font-size:10px}.summary .stat-bottom{font-size:9px;max-width:100px}}
+
+/* Improve contrast and alignment on compact screens. */
+.summary .circle-stat .amount{color:#263e32}
+.summary .circle-stat .amount small{color:#819188}
+.summary .stat-top{color:#52675b;font-weight:600}
+.summary .stat-bottom{color:#748279;font-weight:500;text-align:center}
+@media(max-width:750px){.summary .stat-top{white-space:nowrap}.summary .stat-bottom{max-width:140px;line-height:1.4}}
+
+@media(max-width:750px){
+  .summary .stat-top,.summary .stat-bottom{width:100%;text-align:center}
+}
+
+@media(max-width:750px){
+  .summary{width:100%;grid-template-columns:1fr 1fr;gap:8px;padding-left:0;padding-right:0}
+  .summary .stat{width:100%;min-width:0}
+  .summary .circle-stat .amount{width:104px;height:104px;flex:0 0 104px}
+  .summary .stat-top{font-size:12px;line-height:1.25}
+  .summary .stat-bottom{font-size:11px;line-height:1.35;max-width:155px}
+}
+@media(max-width:420px){.summary .circle-stat .amount{width:94px;height:94px;flex-basis:94px}.summary .stat-top{font-size:11px}.summary .stat-bottom{font-size:10px}}
+
+/* Symmetric balance/stat layout for any number of summary cards. */
+.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:24px;width:100%;max-width:none;padding:12px 0 24px}
+.summary .stat,.summary .stat.main-stat{width:100%;min-width:0;min-height:220px;padding:22px 16px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:9px;text-align:center;background:transparent;border:0;box-shadow:none}
+.summary .circle-stat .amount{order:1;flex:0 0 auto;margin:0;width:116px;height:116px;display:grid;place-content:center;text-align:center}
+.summary .stat-top{order:2;width:100%;font-size:13px;line-height:1.3;text-align:center;white-space:normal}
+.summary .stat-bottom{order:3;width:100%;max-width:240px;margin:0 auto;font-size:12px;line-height:1.45;text-align:center;white-space:normal}
+@media(max-width:900px){.summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.summary .stat,.summary .stat.main-stat{min-height:205px}}
+@media(max-width:520px){.summary{grid-template-columns:1fr 1fr;gap:10px;padding-left:0;padding-right:0}.summary .stat,.summary .stat.main-stat{min-height:175px;padding:12px 5px;gap:6px}.summary .circle-stat .amount{width:84px;height:84px;border-width:5px}.summary .stat-top{font-size:11px}.summary .stat-bottom{font-size:10px;max-width:150px}}
+
+/* Final alignment override */
+.summary{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch!important}
+.summary>.stat{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;text-align:center!important;width:100%!important;box-sizing:border-box!important}
+.summary>.stat>.amount{order:1!important;margin:0 auto!important;align-self:center!important}
+.summary>.stat>.stat-top{order:2!important;width:100%!important;text-align:center!important;align-self:center!important;white-space:normal!important}
+.summary>.stat>.stat-bottom{order:3!important;width:100%!important;max-width:240px!important;text-align:center!important;align-self:center!important}
+@media(max-width:900px){.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:520px){.summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}.summary>.stat>.stat-bottom{max-width:150px!important}}
+
+@media(max-width:750px){
+  .summary>.stat>.stat-top{display:block!important;width:100%!important;text-align:center!important;white-space:nowrap!important}
+  .summary>.stat>.stat-bottom{display:block!important;width:100%!important;max-width:none!important;text-align:center!important;white-space:nowrap!important;font-size:9px!important;letter-spacing:-.25px!important}
+}
+@media(max-width:380px){.summary>.stat>.stat-top{font-size:10px!important}.summary>.stat>.stat-bottom{font-size:8px!important;letter-spacing:-.45px!important}}
