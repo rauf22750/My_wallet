@@ -167,3 +167,4 @@ dialog{max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contai
   .summary>.stat{justify-self:stretch!important;align-items:center!important;text-align:center!important}
   .summary>.stat>.stat-top,.summary>.stat>.stat-bottom{display:block!important;text-align:center!important;width:100%!important}
 }
+.status-badge{display:inline-flex;align-items:center;border-radius:999px;padding:4px 9px;font-size:10px;font-weight:600;white-space:nowrap}.status-paid{background:#e8f3eb;color:#31724a}.status-pending{background:#fff3dc;color:#9a7132}
