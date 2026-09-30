@@ -203,3 +203,7 @@ dialog{max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contai
   .table-wrap td:nth-child(4){font-size:13px}
   .table-wrap .actions button{font-size:11px}
 }
+
+@media(max-width:750px){
+  .table-wrap .mobile-status{display:inline-flex!important;visibility:visible!important;opacity:1!important;position:relative!important;vertical-align:middle!important}
+}
