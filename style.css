@@ -168,3 +168,11 @@ dialog{max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contai
   .summary>.stat>.stat-top,.summary>.stat>.stat-bottom{display:block!important;text-align:center!important;width:100%!important}
 }
 .status-badge{display:inline-flex;align-items:center;border-radius:999px;padding:4px 9px;font-size:10px;font-weight:600;white-space:nowrap}.status-paid{background:#e8f3eb;color:#31724a}.status-pending{background:#fff3dc;color:#9a7132}
+
+/* Recent transactions should use the full content width. */
+.lower-grid{display:block;width:100%;margin-top:18px}
+.lower-grid>.panel{width:100%;max-width:none}
+.lower-grid .table-wrap{width:100%;overflow-x:auto}
+@media(max-width:750px){.lower-grid{margin-top:14px}.lower-grid>.panel{border-radius:12px}}
+.mobile-status{display:none;margin-left:6px;vertical-align:middle}
+@media(max-width:750px){.table-wrap{overflow-x:visible}.table-wrap table{min-width:0;width:100%;table-layout:fixed}.table-wrap th:nth-child(3),.table-wrap td:nth-child(3){display:none}.table-wrap th:nth-child(1),.table-wrap td:nth-child(1){width:58%}.table-wrap th:nth-child(2),.table-wrap td:nth-child(2){width:24%}.table-wrap th:nth-child(4),.table-wrap td:nth-child(4){width:18%}.mobile-status{display:inline-flex;font-size:8px;padding:3px 6px}.table-wrap td,.table-wrap th{padding:10px 7px;font-size:10px}.table-wrap td small{font-size:9px}}
