@@ -176,3 +176,20 @@ dialog{max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contai
 @media(max-width:750px){.lower-grid{margin-top:14px}.lower-grid>.panel{border-radius:12px}}
 .mobile-status{display:none;margin-left:6px;vertical-align:middle}
 @media(max-width:750px){.table-wrap{overflow-x:visible}.table-wrap table{min-width:0;width:100%;table-layout:fixed}.table-wrap th:nth-child(3),.table-wrap td:nth-child(3){display:none}.table-wrap th:nth-child(1),.table-wrap td:nth-child(1){width:58%}.table-wrap th:nth-child(2),.table-wrap td:nth-child(2){width:24%}.table-wrap th:nth-child(4),.table-wrap td:nth-child(4){width:18%}.mobile-status{display:inline-flex;font-size:8px;padding:3px 6px}.table-wrap td,.table-wrap th{padding:10px 7px;font-size:10px}.table-wrap td small{font-size:9px}}
+
+@media(max-width:750px){
+  .table-wrap{overflow:visible!important}
+  .table-wrap table,.table-wrap tbody{display:block!important;width:100%!important;min-width:0!important}
+  .table-wrap thead{display:none!important}
+  .table-wrap tr{display:grid!important;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"main main" "category amount" "actions actions";gap:10px 14px;padding:22px 0!important;border-bottom:1px solid var(--line);min-height:0!important}
+  .table-wrap td{display:block!important;width:auto!important;padding:0!important;border:0!important;min-width:0!important;overflow:visible!important}
+  .table-wrap td:nth-child(1){grid-area:main}
+  .table-wrap td:nth-child(2){grid-area:category;align-self:center}
+  .table-wrap td:nth-child(3){display:none!important}
+  .table-wrap td:nth-child(4){grid-area:amount;align-self:center;text-align:right;white-space:nowrap;font-size:12px}
+  .table-wrap td:nth-child(5){grid-area:actions;text-align:right}
+  .table-wrap td strong{display:block;font-size:15px;line-height:1.35;overflow-wrap:anywhere}
+  .table-wrap td small{display:block;margin-top:6px;font-size:10px}
+  .table-wrap .badge{display:inline-flex;max-width:150px;white-space:normal;overflow-wrap:anywhere}
+  .table-wrap .actions{display:flex;justify-content:flex-end;gap:12px}
+}
